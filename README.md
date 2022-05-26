@@ -8,3 +8,6 @@ vlhkomer  uz mame(z technicky)
 tlakomer
 hlukomer
 pohybove cidlo  uz mame
+
+trafo uz mame
+esp   uz mame
