@@ -1,0 +1,30 @@
+esphome:
+  name: jed_loznice
+  platform: ESP32
+  board: lolin32
+
+wifi:
+  ssid: "957421"
+  password: !secret wifi_password
+  fast_connect: true
+
+# Enable logging
+logger:
+
+api:
+  password: !secret api_password
+
+ota:
+  password: !secret ota_password
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: True
+  id: bus_a
+sensor:
+  - platform: bh1750
+    name: "BH1750 Illuminance"
+    address: 0x23
+    measurement_duration: 69
+    update_interval: 60s

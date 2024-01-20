@@ -1,0 +1,67 @@
+esphome:
+  name: jed-terasa
+  platform: ESP32
+  board: lolin32
+
+wifi:
+  ssid: "957421"
+  password: !secret wifi_password
+  fast_connect: true
+
+# Enable logging
+logger:
+  level: DEBUG
+
+api:
+  password: !secret api_password
+
+ota:
+  password: !secret ota_password
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: True
+  id: bus_a
+
+dallas:
+  - pin: 23
+
+sensor:
+  - platform: bh1750
+    name: "BH1750 Illuminance"
+    address: 0x23
+#    measurement_duration: 69
+
+  - platform: bmp280
+    temperature:
+      name: "Terasa bmp280 teplota"
+    pressure:
+      name: "Terasa venkovni tlak"
+    address: 0x76
+
+  - platform: dallas
+    address: 0x300000000593ff28
+    name: "Terasa venkovni teplota"
+
+binary_sensor:
+  - platform: gpio
+    pin: 34
+    name: "Terasa pohyb"
+    device_class: motion
+
+  - platform: gpio
+    pin: 35
+    name: "Terasa vitr"
+    device_class: motion
+
+  - platform: gpio
+    pin:
+      number: 25
+      inverted: true
+    name: "Terasa dest"
+    device_class: moisture
+
+# Example configuration entry
+
+
